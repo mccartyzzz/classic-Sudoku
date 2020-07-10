@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <title>经典数独</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    
+    <style>
+        /*测试*/
+    </style>
+    <!--弹窗-->
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $(".Rank_btn").click(function () {
+                $(".Rank_Content_Main").fadeIn();
+            })
+            $(".Close_btn").click(function () {
+                $(".Rank_Content_Main").fadeOut();
+            })
+            $(".Rules_btn").click(function () {
+                $(".Rules_Content_Main").fadeIn();
+            });
+            $(".cRules_btn").click(function () {
+                $(".Rules_Content_Main").fadeOut();
+            })
+            
+        });
+    </script>
+    
+    
+</head>
+
+<body>
+    <!--标题-->
+    <div class="title">
+        <h1>经典数独</h1>
+    </div>
+
+    <!-- 计时器  排行榜 游戏规则-->
+    <div class="count">
+        <span id="count_h">00</span>:<span id="count_m">00</span>:<span id="count_s">00</span>
+        
+        <div class="Rank_btn">排行榜</div>
+        <div class="Rules_btn">游戏规则</div>
+    </div>
+
+    <!-- 九宫格 -->
+    <div id="container" class="container grid"></div>
+
+    <!--排行榜内容-->
+    <div class="Rank_Content_Main">
+        <div class="Rank_Content">
+            <div class="Close_btn">点击关闭</div>
+            <!--关闭-->
+
+            <table id="tab" cellpadding="10" cellspacing="15" frame="box">
+                <!--单元格调整-->
+                <tr>
+                    <td><b>排行榜</b></td>
+                </tr>
+
+                <tr class="tr">
+                    <!--一行-->
+                    <!--四列-->
+                    <td>用户名</td>
+                    <td>检查次数</td>
+                    <td>得分</td>
+                    <td>所用时间</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+	<div class="Rules_Content_Main">
+        <div class="Rules_Content">
+            <div class="cRules_btn">点击关闭</div>
+            <p style="font-size: 15px;">游戏规则：</p>
+            <p style="margin-left: 5%;line-height: 50px;font-size: 15px;">保证大宫格内的每行、每列的数据都是1-9，同时
+            		保证每个小宫格内的数据也是1-9，并且无重复，填满所有空格，即可完成游戏！祝大家玩的开心！！</p>
+            		
+            		<p style="margin-left: 5%;line-height: 50px;font-size: 15px;text-align: right;">制作人：刘阳、曾令涛</p>
+        </div>
+    </div>
+
+    
+    <!-- 提交榜单 -->
+    <div style="width: 450px; height: 100px; border: 1px solid black; display: none;">
+        <form action="http://localhost:3001/add" method="GET">
+            <label for="">NAME:</label><input type="hidden" value="" name="upload_name" id="upload_name">
+                                       <input type="hidden" value="" name="upload_time" id="upload_time">
+                                       <input type="hidden" value="" name="upload_checktime" id="upload_checktime">
+                                       <input type="hidden" value="" name="upload_score" id="upload_score">
+            <input type="submit" value="submit" id="s_submit">
+        </form>
+    </div>
+
+    <!-- 按钮 -->
+    <div id="dashboard" class="dashboard">
+        <div class="buttons">
+            <button type="button" id="check">提交结果</button>
+            <button type="button" id="reset">重置本局</button>
+            <button type="button" id="clear">清除标记</button>
+            <button type="button" id="rebuild">重新开始</button>
+        </div>
+    </div>
+
+    <!-- 弹出面板（用于填入数字）： hidden style="position: absolute;left: 10px;top: 100px;"-->
+    <div id="popupNumbers" class="grid popup-num hidden">
+        <!--一开始不显示，要加入hidden属性，隐藏-->
+        <div class="row">
+            <span>1</span><span>2</span><span>3</span>
+        </div>
+        <div class="row">
+            <span>4</span><span>5</span><span>6</span>
+        </div>
+        <div class="row">
+            <span>7</span><span>8</span><span>9</span>
+        </div>
+        <div class="row">
+            <span class="mark1"></span><span class="empty"></span><span class="mark2"></span>
+        </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
